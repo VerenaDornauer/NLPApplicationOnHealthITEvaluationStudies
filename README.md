@@ -3,7 +3,7 @@
 Basic informations and code for the application of Natural Language Processing on Health IT evaluation studies with Python
 
 Methodological steps:
-24 Health IT evaluation studies were selected (see txt file). The aim was to retrieve: evaluated application system, features of the evaluated application system, organizational unit and users of the evaluated application system, software product name, author of the study, the used study method and the outcome criteria of the study. The Gold Standard was manually retrieved these key elements.
+24 Health IT evaluation studies were selected (see txt file). The aim was to retrieve: evaluated application system, features of the evaluated application system, organizational unit and users of the evaluated application system, software product name, author of the study, the used study method and the outcome criteria of the study. The Gold Standard was manually retrieved these key elements. We compared the effectiveness of the methods by comparing the extracted key elements with outcome from manual data extraction. The efficiency was measured by observing the coding task due to complexity of the code and the reusability of the Python code. 
 
 The corpora of the 24 health IT studies were created with the help of word and finally created imported to the IDE PyCharm. Afterwards the four natural language processing methods (Bag-of-Words, Term-Frequency-Inverse-Document-Frequency, Latent Dirichlet Allocation Topic Modelling and Named Entity Recognition) were applied to the 24 health IT evaluation studies (here abstract section, introduction and methods section).
 
@@ -31,16 +31,16 @@ import re
 pattern1 = "\["
 pattern2 = "\]"
 study_clean_mid = re.sub(pattern1, " ", study)
-stud1_clean = re.sub(pattern2, " ", study_clean_mid)
+study_clean = re.sub(pattern2, " ", study_clean_mid)
 tokenizer = RegexpTokenizer(r'[a-zA-z]+')
 study_word_tokenize = tokenizer.tokenize(study_clean)
 
 english_stops = set(stopwords.words('english'))
 study_without_stops = [word for word in study_word_tokenize if word not in english_stops]
 
-lower_study1_preprocessed = [t.lower() for t in study_without_stops]
+lower_study_preprocessed = [t.lower() for t in study_without_stops]
 
-bag_of_words_study = Counter(lower_study1_preprocessed)
+bag_of_words_study = Counter(lower_study_preprocessed)
 
 print(bag_of_words_study.most_common(15))
 ```
@@ -104,7 +104,7 @@ study_clean = re.sub(pattern, "", study)
 
 nlp = spacy.load('en_core_web_sm')
 
-doc = nlp(study17_clean)
+doc = nlp(study_clean)
 
 ent_list=['PERSON', 'ORG', 'PRODUCT']
 
