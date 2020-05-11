@@ -113,4 +113,4 @@ for ent in doc.ents:
             print(ent.label_, ent.text)
 ```
 
-The results are meanwhile submitted to the ICIMTH 2020. Please contact me for further details about used Health IT evaluation studies or .py files.
+The results are meanwhile submitted to the ICIMTH 2020. Please contact me for further details about e.g. .py files
